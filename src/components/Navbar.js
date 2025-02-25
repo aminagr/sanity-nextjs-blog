@@ -22,8 +22,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="flex items-center justify-between p-4 w-full">
-        <div className="text-xl font-bold text-primary md:mx-0 md:pl-10 lg:pl-36 mr-56 ml-12">
-          <Link href="/">Foody</Link>
+        <div className="text-xl font-bold text-primary md:mx-0 md:pl-10 lg:pl-36 mr-44 ml-12">
+          <Link href="/">Foody Blog</Link>
         </div>
 
         <div className="hidden md:flex space-x-12 mx-auto">
