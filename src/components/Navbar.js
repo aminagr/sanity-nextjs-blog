@@ -49,7 +49,7 @@ const Navbar = () => {
         >
           <div className="absolute top-0 left-0 w-full bg-white p-4 shadow-lg z-50">
             <div className="text-xl font-bold text-primary text-center mb-6">
-              <Link href="/">FoodyFy</Link>
+              <Link href="/">Foody Blog</Link>
             </div>
 
             <Link href="/" className="block py-2 text-center uppercase hover:text-primary">Accueil</Link>
