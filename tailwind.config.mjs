@@ -8,9 +8,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+     
+        primary: "#3E7B27", 
+        yellow:"#FBA518"
+     
+},
     },
   },
   plugins: [],
