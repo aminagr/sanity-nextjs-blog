@@ -1,13 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const searchRef = useRef(null);
+  
 
   const closeMenu = (e) => {
     if (e.target.id === "menu-overlay") {
@@ -19,39 +16,8 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleSearch = () => {
-    setIsSearchOpen(!isSearchOpen);
-  };
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
 
-  const clearSearch = () => {
-    setSearchQuery('');
-  };
-
-  useEffect(() => {
-    if (!isSearchOpen) {
-      document.body.style.overflow = 'auto';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-  }, [isSearchOpen]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setIsSearchOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
@@ -64,34 +30,6 @@ const Navbar = () => {
           <Link href="/" className="uppercase hover:text-primary">Accueil</Link>
           <Link href="/#about" className="uppercase hover:text-primary">À propos</Link>
           <Link href="/#contact" className="uppercase hover:text-primary">Contact</Link>
-        </div>
-
-        <div className="relative flex justify-end mr-4 lg:mr-12" ref={searchRef}>
-          <button 
-            onClick={toggleSearch} 
-            className="text-primary focus:outline-none p-2 rounded-full hover:bg-gray-200 transition-all"
-          >
-            <AiOutlineSearch className="w-6 h-6" />
-          </button>
-          {isSearchOpen && (
-            <div className="absolute top-0 right-0 flex items-center">
-              <input
-                type="text"
-                placeholder="Recherche..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="w-48 md:w-64 p-2 border-b-2 border-primary focus:outline-none transition-all ease-in-out duration-300"
-              />
-              {searchQuery && (
-                <button 
-                  onClick={clearSearch} 
-                  className="absolute right-2 text-primary p-1"
-                >
-                  <AiOutlineClose className="w-4 h-4" />
-                </button>
-              )}
-            </div>
-          )}
         </div>
 
         <div className="md:hidden">
