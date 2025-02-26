@@ -56,7 +56,7 @@ export async function getArticleBySlug(slug) {
     "imageUrl": mainImage.asset->url,
    "author": author->name,
 "publishedAt": publishedAt,
-
+queries,
     "categories": categories[]->title,
     readingTime
   }`,

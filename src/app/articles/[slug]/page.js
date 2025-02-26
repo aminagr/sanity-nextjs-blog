@@ -83,6 +83,34 @@ const myPortableTextComponents = {
 };
 
 
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const post = await getArticleBySlug(slug);
+
+  if (!post) {
+    return notFound();
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: `/articles/${slug}`,
+      images: post.imageUrl ? [{ url: urlFor(post.imageUrl).width(1200).url() }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: post.imageUrl ? [urlFor(post.imageUrl).width(1200).url()] : [],
+    },
+  };
+}
+
+
+
 export default async function postPage({ params }) {
   const { slug } = params;
   const post = await getArticleBySlug(slug);
