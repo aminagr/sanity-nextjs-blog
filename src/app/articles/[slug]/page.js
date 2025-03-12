@@ -84,7 +84,7 @@ const myPortableTextComponents = {
 
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getArticleBySlug(slug);
 
   if (!post) {
